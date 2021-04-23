@@ -11,6 +11,8 @@ public:
     MyClass(int number = -1);
     int getNumber() const;
     bool operator<(const MyClass &val) const;
+    bool operator>(const MyClass &val) const;
+
 private:
     int _number;
 };

@@ -15,3 +15,7 @@ int MyClass::getNumber() const {
 bool MyClass::operator<(const MyClass &val) const {
     return this->_number<val._number;
 }
+
+bool MyClass::operator>(const MyClass &val) const {
+    return this->_number>val._number;
+}

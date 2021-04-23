@@ -110,31 +110,80 @@ void myList::insertIncOrderedNode ( const MyClass &val ) {
 
     if(_head == _tail) {
         if(val<_head->value) {
+            //push_front(val);
             node->next = _head;
             _head = node;
             return;
         }
+        //push_back(val);
         _head->next = node;
         node->next = nullptr;
         _tail = node;
         return;
     }
 
+    if(val<_head->value) {
+        push_front(val);
+        return;
+    }
     for(nodes *x = _head;x!=nullptr;x=x->next) {
-        if(val<x->next->value) {
-            node->next = x->next;
-            x->next = node;
+        if(x->next != nullptr) {
+            if(val<x->next->value) {
+                node->next = x->next;
+                x->next = node;
+                return;
+            }
+        }
+        else{
+            push_back(val);
             return;
         }
     }
 
-    push_back(val);
 }
 
 /* Insert an element in a sorted list with decreasing values . Current
 element moved to the new element .*/
 void myList::insertDecOrderedNode ( const MyClass &val ) {
+    if(_head == nullptr) {
+        push_front(val);
+        return;
+    }
 
+    nodes *node = _new_node();
+    node->value=val;
+
+    if(_head == _tail) {
+        if(val>_head->value) {
+            //push_front(val);
+            node->next = _head;
+            _head = node;
+            return;
+        }
+        //push_back(val);
+        _head->next = node;
+        node->next = nullptr;
+        _tail = node;
+        return;
+    }
+
+    if(val>_head->value) {
+        push_front(val);
+        return;
+    }
+    for(nodes *x = _head;x!=nullptr;x=x->next) {
+        if(x->next != nullptr) {
+            if (val > x->next->value) {
+                node->next = x->next;
+                x->next = node;
+                return;
+            }
+        }
+        else {
+            push_back(val);
+            return;
+        }
+    }
 }
 
 /* Delete the pos -th node of the list . Current element moved to the
