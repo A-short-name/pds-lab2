@@ -3,4 +3,4 @@ project(pds_lab2)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(pds_lab2 main.cpp)
+add_executable(pds_lab2 main.cpp FileOrDirectory.cpp FileOrDirectory.h)
